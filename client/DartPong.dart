@@ -10,12 +10,14 @@
 
 
 void main() {
-  new DartPong();
+  Element container =  document.query('#mainAppContainer'); // TODO: vypeknit
+  new DartPong( container );
 }
 
 class DartPong {
-
-  DartPong() {
+  Element container;
+  
+  DartPong(Element this.container) {
     this.run();
   }
 
@@ -34,12 +36,14 @@ class DartPong {
     map.add(rightHandler);
     
     Arena arena = new Arena( map, ball );
-    Renderer renderer = new Renderer( arena );
-    Ticker ticker = new Ticker( 10, arena, renderer, window );
+    
+    Renderer renderer = new Renderer( arena, container );
+    renderer.initRender();
     
     HandlerListener leftHandlerListener  = new HandlerListener(leftHandler, 38, 40, renderer);
     HandlerListener rightHandlerListener = new HandlerListener(rightHandler, 83, 88, renderer);
     
+    Ticker ticker = new Ticker( 10, arena, renderer, window );
     ticker.start();
   }
 }

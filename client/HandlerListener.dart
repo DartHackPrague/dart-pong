@@ -24,6 +24,6 @@ class HandlerListener {
       handler.moveDown();
     }
     
-    renderer.renderCollisionObject(handler);
+    renderer.moveCollisionObject(handler);
   }
 }
