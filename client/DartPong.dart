@@ -34,8 +34,10 @@ class DartPong {
     map.add(leftHandler);
     Handler rightHandler = new Handler( 'right_handler', 780, 300, 10, 100, 0, 10 );
     map.add(rightHandler);
-    Handler bottomHandler = new Handler( 'bottom_handler', 350, 10, 100, 10, Math.PI, 10 );
+    Handler bottomHandler = new Handler( 'bottom_handler', 350, 580, 100, 10, Math.PI, 10 );
     map.add(bottomHandler);
+    Handler topHandler = new Handler( 'top_handler', 350, 10, 100, 10, Math.PI, 10 );
+    map.add(topHandler);
     
     
     Arena arena = new Arena( map, ball );
@@ -46,6 +48,7 @@ class DartPong {
     HandlerListener leftHandlerListener  = new HandlerListener(leftHandler, 38, 40, renderer);
     HandlerListener rightHandlerListener = new HandlerListener(rightHandler, 83, 88, renderer);
     HandlerListener bottomHandlerListener = new HandlerListener(bottomHandler, 66, 78, renderer);
+    HandlerListener topHandlerListener = new HandlerListener(topHandler, 85, 73, renderer);
     
     Ticker ticker = new Ticker( 10, arena, renderer, window );
     ticker.start();
