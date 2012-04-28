@@ -14,6 +14,8 @@ class HandlerListener {
   }
   
   handlerMoved(e) {
+    print(e.keyCode);
+    
     if (e.keyCode == keyUpCode) {
       handler.moveUp();
     }
@@ -22,6 +24,6 @@ class HandlerListener {
       handler.moveDown();
     }
     
-    renderer.renderCollisionObject(handler);
+    renderer.moveCollisionObject(handler);
   }
 }
