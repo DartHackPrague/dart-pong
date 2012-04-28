@@ -27,14 +27,18 @@ class DartPong {
     map.add(new CollisionObject( 'spodni_stena', 0, 600, 800, 1, 0, 0 ));
     
     Ball ball = new Ball( 'ball', 300, 300, 10, 10, 6, 1 );
-    Handler handler = new Handler( 'handler', 10, 300, 10, 100, 0, 0 );
-    map.add(handler);
+    
+    Handler leftHandler  = new Handler( 'left_handler', 10, 300, 10, 100, 0, 10 );
+    map.add(leftHandler);
+    Handler rightHandler = new Handler( 'right_handler', 780, 300, 10, 100, 0, 10 );
+    map.add(rightHandler);
     
     Arena arena = new Arena( map, ball );
     Renderer renderer = new Renderer( arena );
     Ticker ticker = new Ticker( 10, arena, renderer, window );
     
-    HandlerListener listener = new HandlerListener(handler, 38, 40, renderer);
+    HandlerListener leftHandlerListener  = new HandlerListener(leftHandler, 38, 40, renderer);
+    HandlerListener rightHandlerListener = new HandlerListener(rightHandler, 83, 88, renderer);
     
     ticker.start();
   }
