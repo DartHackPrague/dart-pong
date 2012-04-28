@@ -1,7 +1,12 @@
+#source('CollisionObject.dart');
+#source('Ball.dart');
+
 class Arena {
-  List <CollistionObject>
+  List<CollisionObject> collisionObjects;
   
-  Ball <CollistionObject>
+  Ball ball;
+  
+  Arena(this.collisionObjects, this.ball);
   
   checkCollistions() {
     // pokud dojde ke kolizi, spusti se onCollistion na obou objektech
