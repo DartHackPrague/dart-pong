@@ -6,6 +6,8 @@
 #source('Arena.dart');
 #source('Ball.dart');
 #source('Handler.dart');
+#source('VerticalHandler.dart');
+#source('HorizontalHandler.dart');
 #source('HandlerListener.dart');
 
 
@@ -30,13 +32,13 @@ class DartPong {
     map.add(new CollisionObject( 'prava_stena', 800, 0, 1, 600, 0, 0, ball ));
     map.add(new CollisionObject( 'spodni_stena', 0, 600, 800, 1, 0, 0, ball ));
     
-    Handler leftHandler  = new Handler( 'left_handler', 10, 300, 10, 100, 0, 10 , ball);
+    Handler leftHandler  = new VerticalHandler( 'left_handler', 10, 300, 10, 100, 0, 10 , ball);
     map.add(leftHandler);
-    Handler rightHandler = new Handler( 'right_handler', 780, 300, 10, 100, 0, 10 , ball);
+    Handler rightHandler = new VerticalHandler( 'right_handler', 780, 300, 10, 100, 0, 10 , ball);
     map.add(rightHandler);
-    Handler bottomHandler = new Handler( 'bottom_handler', 350, 580, 100, 10, Math.PI, 10 , ball);
+    Handler bottomHandler = new HorizontalHandler( 'bottom_handler', 350, 580, 100, 10, 0, 10 , ball);
     map.add(bottomHandler);
-    Handler topHandler = new Handler( 'top_handler', 350, 10, 100, 10, Math.PI, 10 , ball);
+    Handler topHandler = new HorizontalHandler( 'top_handler', 350, 10, 100, 10, 0, 10 , ball);
     map.add(topHandler);
     
     
