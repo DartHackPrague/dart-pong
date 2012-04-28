@@ -17,8 +17,20 @@ class Renderer {
   }
   
   renderCollisionObject(CollisionObject o) {
-    Element e = o.getHTMLElement();
+    Element e = getHTMLElementFromCollisionObject(o);
     container.nodes.add(e); 
+  }
+  
+  getHTMLElementFromCollisionObject(CollisionObject o) {
+    Element e = new Element.tag('div');
+    e.attributes['id'] = o.id;
+    e.classes.add('colision_object');
+    e.style.width = '${o.width}px';
+    e.style.height = '${o.height}px';
+    e.style.top = '${o.y}px';
+    e.style.left = '${o.x}px';
+    
+    return e;
   }
   
   moveCollisionObject(CollisionObject o) {

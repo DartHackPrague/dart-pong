@@ -22,22 +22,6 @@ class CollisionObject {
     }
   }
   
-  
-  Element getHTMLElement() {
-    
-    Element e = new Element.tag('div');
-    e.attributes['id'] = id;
-    e.classes.add('colision_object');
-    e.style.width = '${width}px';
-    e.style.height = '${height}px';
-    e.style.top = '${y}px';
-    e.style.left = '${x}px';
-    
-    return e;
-    
-  }
-  
-  
   bool isCollisionWith(CollisionObject o) { // kulicka + mozne dalsi objekty
     // top
     if (this.y < o.y+o.height && this.y+this.height > o.y+o.height && this.x+this.width > o.x && o.x+o.width > this.x) {
