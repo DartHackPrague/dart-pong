@@ -6,7 +6,7 @@
 #source('Arena.dart');
 #source('Ball.dart');
 #source('Handler.dart');
-#source('Listeners.dart');
+#source('HandlerListener.dart');
 
 
 void main() {
@@ -34,9 +34,8 @@ class DartPong {
     Renderer renderer = new Renderer( arena );
     Ticker ticker = new Ticker( 10, arena, renderer, window );
     
-    Listeners listener = new Listeners(handler, renderer);
+    HandlerListener listener = new HandlerListener(handler, 38, 40, renderer);
     
     ticker.start();
   }
-
 }
