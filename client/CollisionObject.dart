@@ -40,27 +40,27 @@ class CollisionObject {
   bool isCollisionWith(CollisionObject o) { // kulicka + mozne dalsi objekty
     // top
     if (this.y < o.y+o.height && this.y+this.height > o.y+o.height && this.x+this.width > o.x && o.x+o.width > this.x) {
-      document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>TOP';
+      //document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>TOP';
       return true;
     } 
 
     // bottom
     if (this.y+this.height > o.y && this.y+this.height < o.y+o.height && this.x+this.width > o.x && o.x+o.width > this.x.ceil()) {
-      document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>BOTTOM';
+      //document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>BOTTOM';
       return true;
     } 
   
     
     // left
     if (this.x < o.x+o.width && this.x>o.x && this.y+this.height > o.y && this.y < o.y+o.height) {
-      document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>LEFT';
+      //document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>LEFT';
       return true;      
     } 
 
     
     // right
     if (this.x+this.width > o.x && this.x+this.width<o.x+o.width && this.y+this.height > o.y && this.y < o.y+o.height) {
-      document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>RIGHT';
+      //document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>RIGHT';
       return true;      
     } 
     
