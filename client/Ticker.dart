@@ -1,8 +1,3 @@
-#import('dart:html');
-
-#source('Arena.dart');
-#source('Renderer.dart');
-
 class Ticker {  
   int time;
   int interval;
