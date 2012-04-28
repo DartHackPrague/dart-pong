@@ -1,3 +1,4 @@
-class Ball extends CollistionObject {
-  onCollision()
+class Ball extends CollisionObject {
+  void onCollisionWith(CollisionObject o) {
+  }
 }

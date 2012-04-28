@@ -3,9 +3,8 @@ class CollisionObject {
   int width, height;
   double x, y, direction, speed; // TODO: speed zatim px/tick, lepe spocitat z kontanty 
   bool visible;
-  
+
   CollisionObject(this.x, this.y, this.width, this.height, this.direction, this.speed) {
-    
   }
   
   void onCollisionWidth(CollisionObject o) {
