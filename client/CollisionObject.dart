@@ -7,7 +7,7 @@ class CollisionObject {
   CollisionObject(this.x, this.y, this.width, this.height, this.direction, this.speed) {
   }
   
-  void onCollisionWidth(CollisionObject o) {
+  void onCollisionWith(CollisionObject o) {
   }
   
   void changePosition() {  // vymyslet mozne prejmenovani
