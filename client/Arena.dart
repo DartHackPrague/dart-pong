@@ -16,7 +16,7 @@ class Arena {
   
   // v tuto chvili jen u micku
   changePositions() {
-    
+    ball.changePosition();
   }
   
 }
