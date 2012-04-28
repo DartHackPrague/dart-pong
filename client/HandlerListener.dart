@@ -14,8 +14,6 @@ class HandlerListener {
   }
   
   handlerMoved(e) {
-    print(e.keyCode);
-    
     if (e.keyCode == keyUpCode) {
       handler.moveUp();
     }
