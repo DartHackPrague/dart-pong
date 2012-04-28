@@ -26,6 +26,8 @@ class DartPong {
   void run() {
     Ball ball = new Ball( 'ball', 300, 300, 10, 10, 6, 1, null );
     
+    // tu referenci na ball bych mel asi rano vymyslet lepeji
+    
     List<CollisionObject> map = new List<CollisionObject>();
     map.add(new CollisionObject( 'leva_stena', 0, 0, 1, 600, 0, 0, ball ));
     map.add(new CollisionObject( 'horni_stena', 0, 0, 800, 1, 0, 0, ball ));
