@@ -3,7 +3,7 @@ class Arena {
   
   Ball ball;
   
-  Arena(this.collisionObjects, this.ball);
+  Arena( this.collisionObjects, this.ball );
   
   checkCollistions() {
     collisionObjects.forEach((collisionObject) {

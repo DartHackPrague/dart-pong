@@ -5,11 +5,14 @@ class CollisionObject {
   int width, height;
   bool visible;
 
+  
   CollisionObject(this.id, this.x, this.y, this.width, this.height, this.direction, this.speed) {
   }
   
+  
   void onCollisionWith(CollisionObject o) {
   }
+  
   
   void changePosition() {  // vymyslet mozne prejmenovani
     if (this.speed != 0.0) {
@@ -18,6 +21,20 @@ class CollisionObject {
     }
   }
   
+  
+  Element getHTMLElement() {
+    
+    Element e = new Element.tag('div');
+    e.attributes['id'] = id;
+    e.classes.add('colision_object');
+    e.style.width = '${width}px';
+    e.style.height = '${height}px';
+    e.style.top = '${y}px';
+    e.style.left = '${x}px';
+    
+    return e;
+    
+  }
   
   
   bool isCollisionWith(CollisionObject o) { // kulicka + mozne dalsi objekty
@@ -31,12 +48,14 @@ class CollisionObject {
     if (o.y < this.y + this.height && o.x+o.width > this.x && o.x < this.x + this.width) {
       return true;
     } 
+  
     
     // left
     if (o.x + o.width > this.x && o.y+o.height > this.y && o.y < this.y+this.height) {
       return true;      
     } 
 
+    
     // right
     if (o.x < this.x + this.width && o.y+o.height > this.y && o.y < this.y+this.height) {
       return true;      
