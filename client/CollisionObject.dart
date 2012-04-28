@@ -6,7 +6,7 @@ class CollisionObject {
   double speed; 
   bool visible;
   
-  void onCollision() {
+  void onCollisionWith(CollisionObject o) {
     
   }
   
