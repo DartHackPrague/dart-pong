@@ -23,7 +23,7 @@ class DartPong {
     map.add(new CollisionObject( 0, 0, 800, 10, 0, 0 ));
     map.add(new CollisionObject( 790, 0, 10, 600, 0, 0 ));
     map.add(new CollisionObject( 0, 790, 800, 10, 0, 0 ));
-    Ball ball = new Ball();
+    Ball ball = new Ball(300, 300, 10, 10, 0, 1);
     Arena arena = new Arena( map, ball );
     Renderer renderer = new Renderer( arena );
     Ticker ticker = new Ticker( 100, arena, renderer );    
