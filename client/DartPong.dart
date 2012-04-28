@@ -22,21 +22,21 @@ class DartPong {
   }
 
   void run() {
+    Ball ball = new Ball( 'ball', 300, 300, 10, 10, 6, 1, null );
+    
     List<CollisionObject> map = new List<CollisionObject>();
-    map.add(new CollisionObject( 'leva_stena', 0, 0, 1, 600, 0, 0 ));
-    map.add(new CollisionObject( 'horni_stena', 0, 0, 800, 1, 0, 0 ));
-    map.add(new CollisionObject( 'prava_stena', 800, 0, 1, 600, 0, 0 ));
-    map.add(new CollisionObject( 'spodni_stena', 0, 600, 800, 1, 0, 0 ));
+    map.add(new CollisionObject( 'leva_stena', 0, 0, 1, 600, 0, 0, ball ));
+    map.add(new CollisionObject( 'horni_stena', 0, 0, 800, 1, 0, 0, ball ));
+    map.add(new CollisionObject( 'prava_stena', 800, 0, 1, 600, 0, 0, ball ));
+    map.add(new CollisionObject( 'spodni_stena', 0, 600, 800, 1, 0, 0, ball ));
     
-    Ball ball = new Ball( 'ball', 300, 300, 10, 10, 6, 1 );
-    
-    Handler leftHandler  = new Handler( 'left_handler', 10, 300, 10, 100, 0, 10 );
+    Handler leftHandler  = new Handler( 'left_handler', 10, 300, 10, 100, 0, 10 , ball);
     map.add(leftHandler);
-    Handler rightHandler = new Handler( 'right_handler', 780, 300, 10, 100, 0, 10 );
+    Handler rightHandler = new Handler( 'right_handler', 780, 300, 10, 100, 0, 10 , ball);
     map.add(rightHandler);
-    Handler bottomHandler = new Handler( 'bottom_handler', 350, 580, 100, 10, Math.PI, 10 );
+    Handler bottomHandler = new Handler( 'bottom_handler', 350, 580, 100, 10, Math.PI, 10 , ball);
     map.add(bottomHandler);
-    Handler topHandler = new Handler( 'top_handler', 350, 10, 100, 10, Math.PI, 10 );
+    Handler topHandler = new Handler( 'top_handler', 350, 10, 100, 10, Math.PI, 10 , ball);
     map.add(topHandler);
     
     

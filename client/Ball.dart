@@ -1,5 +1,5 @@
 class Ball extends CollisionObject {
-  Ball(id, x, y, width, height, direction, speed) : super(id, x, y, width, height, direction, speed);
+  Ball(id, x, y, width, height, direction, speed, ball) : super(id, x, y, width, height, direction, speed, ball);
   
   void onCollisionWith(CollisionObject o) {
     
