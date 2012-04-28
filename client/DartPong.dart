@@ -19,6 +19,10 @@ class DartPong {
 
   void run() {
     List<CollisionObject> map;
+    map.add(new CollisionObject( 0, 0, 10, 600 ));
+    map.add(new CollisionObject( 0, 0, 800, 10 ));
+    map.add(new CollisionObject( 790, 0, 10, 600 ));
+    map.add(new CollisionObject( 0, 790, 800, 10 ));
     Ball ball = new Ball();
     Arena arena = new Arena( map, ball );
     Renderer renderer = new Renderer( arena );
