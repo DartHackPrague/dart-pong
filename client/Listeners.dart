@@ -1,14 +1,23 @@
 class Listeners {
-  int i = 0;
-  initHandler(handler) {
-    
-    window.on.keyDown.add(handerMoved);
-    
+  Handler handler;
+  Renderer renderer;
+  
+  Listeners(handler, renderer) {
+    this.handler = handler;
+    this.renderer = renderer;
+        
+    window.on.keyDown.add(handlerMoved);
   }
   
-  handerMoved(e) {
-    i++;
+  handlerMoved(e) {
+    if (e.keyCode == 38) {
+      handler.moveUp();
+    }
     
-    document.query('#arena').innerHTML = '${i}';
+    if (e.keyCode == 40) {
+      handler.moveDown();
+    }
+    
+    renderer.renderCollisionObject(handler);
   }
 }
