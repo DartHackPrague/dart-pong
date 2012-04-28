@@ -1,6 +1,3 @@
-#source('CollisionObject.dart');
-#source('Ball.dart');
-
 class Arena {
   List<CollisionObject> collisionObjects;
   
@@ -10,6 +7,11 @@ class Arena {
   
   checkCollistions() {
     // pokud dojde ke kolizi, spusti se onCollistion na obou objektech
+  }
+  
+  // v tuto chvili jen u micku
+  changePositions() {
+    
   }
   
 }

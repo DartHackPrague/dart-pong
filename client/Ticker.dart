@@ -1,16 +1,15 @@
 #import('dart:html');
 
 #source('Arena.dart');
+#source('Renderer.dart');
 
-class Ticker {
-  
+class Ticker {  
   int time;
   int interval;
   Arena arena;
+  Renderer renderer;
   
-  Ticker(int this.time) { 
-    this.start();
-  }
+  Ticker(int this.time, this.renderer);
   
   start() {
     if (interval == null) {
@@ -27,6 +26,9 @@ class Ticker {
   }
   
   onTick() {
+    arena.checkCollistions();
+    arena.changePositions();
     
+    renderer.render();
   }
 }

@@ -1,5 +1,3 @@
-#source('Arena.dart');
-
 class Renderer {
   Arena arena;
 
