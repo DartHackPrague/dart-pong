@@ -26,10 +26,12 @@ class DartPong {
     map.add(new CollisionObject( 'prava_stena', 800, 0, 1, 600, 0, 0 ));
     map.add(new CollisionObject( 'spodni_stena', 0, 600, 800, 1, 0, 0 ));
     
-    Ball ball = new Ball( 'ball', 300, 300, 10, 10, 6, 1);
+    Ball ball = new Ball( 'ball', 300, 300, 10, 10, 6, 1 );
+    Handler handler = new Handler( 'handler', 10, 300, 10, 100, 0, 0 );
+    map.add(handler);
     Arena arena = new Arena( map, ball );
     Renderer renderer = new Renderer( arena );
-    Ticker ticker = new Ticker( 10, arena, renderer, window );
+    Ticker ticker = new Ticker( 10, arena, renderer, window );    
     
     ticker.start();
     
