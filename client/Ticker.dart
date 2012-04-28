@@ -3,8 +3,9 @@ class Ticker {
   int interval;
   Arena arena;
   Renderer renderer;
+  Window window;
   
-  Ticker(int this.time, this.arena, this.renderer);
+  Ticker(int this.time, this.arena, this.renderer, this.window);
   
   start() {
     if (interval == null) {
