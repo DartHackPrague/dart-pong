@@ -11,7 +11,7 @@ class CollisionObject {
   }
   
   void changePosition() {  // vymyslet mozne prejmenovani
-    if (this.speed != 0.0 && this.direction != 0.0) {
+    if (this.speed != 0.0) {
       this.x += speed * Math.cos(direction);
       this.y += speed * Math.sin(direction);
     }
