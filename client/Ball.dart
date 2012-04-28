@@ -6,22 +6,22 @@ class Ball extends CollisionObject {
     // bounce
     
     // top
-    if (o.y+o.height > this.y && o.x+o.width > this.x && o.x < this.x + this.width) {
-       this.direction = 2*Math.PI - this.direction;
+    if (this.y < o.y+o.height && this.y+this.height > o.y+o.height && this.x+this.width > o.x && o.x+o.width > this.x) {
+      this.direction = 2*Math.PI - this.direction;
     } 
 
     // bottom
-    if (o.y < this.y + this.height && o.x+o.width > this.x && o.x < this.x + this.width) {
+    if (this.y+this.height > o.y && this.y+this.height < o.y+o.height && this.x+this.width > o.x && o.x+o.width > this.x.ceil()) {
       this.direction = 2*Math.PI - this.direction;
     } 
     
     // left
-    if (o.x + o.width > this.x && o.y+o.height > this.y && o.y < this.y+this.height) {
+    if (this.x < o.x+o.width && this.x>o.x && this.y+this.height > o.y && this.y < o.y+o.height) {
       this.direction = Math.PI - this.direction;
     } 
 
     // right
-    if (o.x < this.x + this.width && o.y+o.height > this.y && o.y < this.y+this.height) {
+    if (this.x+this.width > o.x && this.x+this.width<o.x+o.width && this.y+this.height > o.y && this.y < o.y+o.height) {
       this.direction = Math.PI - this.direction; 
     } 
 

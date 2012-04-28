@@ -22,7 +22,7 @@ class Ticker {
   }
   
   onTick() {
-    arena.checkCollistions();
+    arena.checkCollisions();
     arena.changePositions();
     
     renderer.render();
