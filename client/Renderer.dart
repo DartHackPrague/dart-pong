@@ -4,8 +4,12 @@ class Renderer {
   Renderer(Arena this.arena);
   
   render() {
-    var ballElement = document.query('#${arena.ball.id}');
-    ballElement.style.left = '${arena.ball.x}px';
-    ballElement.style.top = '${arena.ball.y}px';
+    renderCollisionObject(arena.ball);
+  }
+  
+  renderCollisionObject(CollisionObject o) {
+    Element element = document.query('#${o.id}');
+    element.style.left = '${o.x}px';
+    element.style.top = '${o.y}px';
   }
 }
