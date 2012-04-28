@@ -6,7 +6,12 @@ class Arena {
   Arena(this.collisionObjects, this.ball);
   
   checkCollistions() {
-    // pokud dojde ke kolizi, spusti se onCollistion na obou objektech
+    collisionObjects.forEach((collisionObject) {
+        if (ball.isCollisionWith(collisionObject)) {
+          ball.onCollisionWith(collisionObject);
+          collisionObject.onCollisionWith(ball);
+        }
+    });
   }
   
   // v tuto chvili jen u micku
