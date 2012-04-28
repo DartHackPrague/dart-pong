@@ -26,7 +26,7 @@ class DartPong {
     Ball ball = new Ball();
     Arena arena = new Arena( map, ball );
     Renderer renderer = new Renderer( arena );
-    Ticker ticker = new Ticker( 100 );    
+    Ticker ticker = new Ticker( 100, arena, renderer );    
   }
 
 }

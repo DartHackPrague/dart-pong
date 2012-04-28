@@ -4,7 +4,7 @@ class Ticker {
   Arena arena;
   Renderer renderer;
   
-  Ticker(int this.time, this.renderer);
+  Ticker(int this.time, this.arena, this.renderer);
   
   start() {
     if (interval == null) {
