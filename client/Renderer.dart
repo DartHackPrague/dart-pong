@@ -1,9 +1,11 @@
-class Renderer {
+#source('Arena.dart');
 
-  void Renderer(Arena ) {
-  	this.render();
+class Renderer {
+  Arena arena;
+
+  Renderer(Arena this.arena);
+  
+  render() {
+    
   }
-  
-  render() 
-  
 }

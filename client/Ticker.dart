@@ -1,3 +1,7 @@
+#import('dart:html');
+
+#source('Arena.dart');
+
 class Ticker {
   
   int time;
@@ -8,11 +12,21 @@ class Ticker {
     this.start();
   }
   
-  start()
+  start() {
+    if (interval == null) {
+      interval = window.setInterval(tick, this.time);
+    }
+  }
   
-  stop()
+  stop() {
+    window.clearInterval(interval);
+  }
   
-  onTick()
+  tick() {
+    onTick();
+  }
   
-  
+  onTick() {
+    
+  }
 }
