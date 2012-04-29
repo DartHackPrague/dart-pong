@@ -31,6 +31,7 @@ class DartPong {
     
     List<CollisionObject> map = new List<CollisionObject>();
     List<CollisionObject> handlers = new List<CollisionObject>();
+    List<CollisionObject> killingZones = new List<CollisionObject>();
     
     Handler leftHandler  = new VerticalHandler( 'left_handler', 10, 300, 10, 100, 0, 10 , ball);
     map.add(leftHandler);
@@ -46,18 +47,22 @@ class DartPong {
     handlers.add(topHandler);
     
     CollisionObject leftWall = new KillingZone( 'left_wall', 0, 0, 1, 600, 0, 0, ball, leftHandler );
-    map.add(leftWall);    
+    map.add(leftWall);   
+    killingZones.add(leftWall);   
     CollisionObject topWall = new KillingZone( 'top_wall', 0, 0, 800, 1, 0, 0, ball, topHandler );
     map.add(topWall);
+    killingZones.add(topWall);
     CollisionObject rightWall = new KillingZone( 'right_wall', 800, 0, 1, 600, 0, 0, ball, rightHandler );
     map.add(rightWall);
+    killingZones.add(rightWall);
     CollisionObject bottomWall = new KillingZone( 'bottom_wall', 0, 600, 800, 1, 0, 0, ball, bottomHandler );
     map.add(bottomWall);
+    killingZones.add(bottomWall);
     
     
     Arena arena = new Arena( map, ball );
     
-    Renderer renderer = new Renderer( arena, container, handlers );
+    Renderer renderer = new Renderer( arena, container, handlers, killingZones );
     renderer.initRender();
     
     HandlerListener leftHandlerListener  = new HandlerListener(leftHandler, 38, 40, renderer);

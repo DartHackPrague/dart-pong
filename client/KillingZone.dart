@@ -1,5 +1,6 @@
 class KillingZone extends CollisionObject {
   Handler handler;
+  bool killedRightNow = false;
   
   KillingZone(id, x, y, width, height, direction, speed, ball, this.handler) : super(id, x, y, width, height, direction, speed, ball);
   
@@ -9,5 +10,6 @@ class KillingZone extends CollisionObject {
     ball.speed = 1.0;
     
     handler.countOfDeaths++;
+    killedRightNow = true;
   }
 }

@@ -2,8 +2,9 @@ class Renderer {
   Arena arena;
   Element container;
   List<CollisionObject> handlers;
+  List<CollisionObject> killingZones;
   
-  Renderer(Arena this.arena, Element this.container, List<CollisionObject> this.handlers);
+  Renderer(Arena this.arena, Element this.container, List<CollisionObject> this.handlers, List<CollisionObject> this.killingZones);
   
   initRender() {
     arena.collisionObjects.forEach((collisionObject) {
@@ -15,6 +16,17 @@ class Renderer {
   
   render() {
     moveCollisionObject(arena.ball);
+    
+    killingZones.forEach((handler) {
+      if (handler.killedRightNow) {
+        handler.killedRightNow = false;
+        
+        document.query('#${handler.id}').classes.add('killed');
+        window.setTimeout(() {
+          document.query('#${handler.id}').classes.remove('killed'); 
+        }, 200);
+      }
+    });
   }
   
   renderCollisionObject(CollisionObject o) {
