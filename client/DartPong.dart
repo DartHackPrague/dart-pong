@@ -29,10 +29,16 @@ class DartPong {
   bool isMultiplayer = false;
   
   DartPong(Element this.container) {
-    this.runMultiPlayer();
+    Element bttSingle = document.query('#bttPlaySingle');
+    Element bttMulti = document.query('#bttPlayMulti');
+    
+    bttSingle.on.click.add( (e) {this.runSinglePlayer();} ); 
+    bttMulti.on.click.add( (e) {this.runMultiPlayer();} ); 
   }
 
   void runSinglePlayer() {
+    document.query('#welcomeScreen').style.display = 'none';
+    
     Ball ball = new Ball( 'ball', 300, 300, 10, 10, 6, 1 );
     
     List<CollisionObject> map = new List<CollisionObject>();
@@ -52,16 +58,16 @@ class DartPong {
     map.add(topHandler);
     handlers.add(topHandler);
     
-    CollisionObject leftWall = new KillingZone( 'left_wall', 0, 0, 1, 600, 0, 0, leftHandler );
+    CollisionObject leftWall = new KillingZone( 'left_wall', 0, 0, 0, 600, 0, 0, leftHandler );
     map.add(leftWall);   
     killingZones.add(leftWall);   
-    CollisionObject topWall = new KillingZone( 'top_wall', 0, 0, 600, 1, 0, 0, topHandler );
+    CollisionObject topWall = new KillingZone( 'top_wall', 0, 0, 600, 0, 0, 0, topHandler );
     map.add(topWall);
     killingZones.add(topWall);
-    CollisionObject rightWall = new KillingZone( 'right_wall', 600, 0, 1, 600, 0, 0, rightHandler );
+    CollisionObject rightWall = new KillingZone( 'right_wall', 600, 0, 0, 600, 0, 0, rightHandler );
     map.add(rightWall);
     killingZones.add(rightWall);
-    CollisionObject bottomWall = new KillingZone( 'bottom_wall', 0, 600, 600, 1, 0, 0, bottomHandler );
+    CollisionObject bottomWall = new KillingZone( 'bottom_wall', 0, 600, 600, 0, 0, 0, bottomHandler );
     map.add(bottomWall);
     killingZones.add(bottomWall);
     
@@ -95,6 +101,7 @@ class DartPong {
   
   void runMultiPlayer()
   {
+    document.query('#welcomeScreen').style.display = 'none';
     ws = new WebSocket("ws://localhost:3000/ws");
     MessageReceiver receiver = new MessageReceiver(ws, this);
    

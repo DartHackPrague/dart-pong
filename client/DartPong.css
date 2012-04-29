@@ -1,8 +1,11 @@
 body, html {
 	border: none;
+	width: 100%;
+	height: 100%;
 	margin 0;
 	padding: 0;
 	background: #000;
+	overflow: hidden;
 }
 
 #arena {
@@ -22,13 +25,15 @@ body, html {
 	width: 30px;
 	height: 30px;
 	-webkit-border-radius: 15px;
-	-webkit-box-shadow: 0px 0px 2px 2px red;
+	-webkit-box-shadow: 0px 0px 5px 5px red;
 	background: #f00;
+	border: none;	
 }
 
 .colision_object {
-	background: #0f0;
+	border: 1px solid #0f0;
 	position: absolute;
+	background: rgba(0, 255, 0, .2);
 }
 
 .colision_object.killed {
@@ -44,13 +49,15 @@ body, html {
 }
 
 #mainAppContainer {
-	margin: 20px;
+	margin: 120px auto;
 	position: relative;
-	/*
+	width: 600px;
+	
 	-webkit-animation-name: animateArena;
 	-webkit-animation-duration: 5s;
 	-webkit-animation-iteration-count: infinite;
-	*/
+	
+	-webkit-transform-origin: 300px 300px;
 }
 
 #mainAppContainer.rN {
@@ -93,6 +100,7 @@ body, html {
 	-webkit-animation-duration: 1s;
 	-webkit-animation-iteration-count: infinite;
 	-webkit-border-radius: 5px;
+	background: #0f0;
 }
 
 @-webkit-keyframes animateHandler
@@ -120,15 +128,28 @@ body, html {
 
 @-webkit-keyframes animateArena
 {
-	0% {
-		-webkit-transform: rotate(0);
-	}
-
-	50% {
-		-webkit-transform: rotate(180deg);
-	}
 	
 	100% {
 		-webkit-transform: rotate(360deg);
 	}
+}
+
+#welcomeScreen {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: url(img/logo.png) 50% 50% no-repeat;
+}
+
+#buttons {
+	position: absolute;
+	top: 700px;
+	text-align: center;
+	width: 100%;
+}
+
+#buttons img {
+	cursor: pointer;
 }
