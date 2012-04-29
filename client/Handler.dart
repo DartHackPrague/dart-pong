@@ -1,7 +1,7 @@
 class Handler extends CollisionObject {
   int countOfDeaths = 0;
   
-  Handler(id, x, y, width, height, direction, speed, ball) : super(id, x, y, width, height, direction, speed, ball);
+  Handler(id, x, y, width, height, direction, speed) : super(id, x, y, width, height, direction, speed);
   
   moveUp() {
   }
@@ -11,6 +11,8 @@ class Handler extends CollisionObject {
   
   void onCollisionWith(CollisionObject o) {
     // print('Collision handler');
-    ball.speed += 1;
+    if (arena != null) {
+      arena.ball.speed += 1;
+    }
   } 
 }

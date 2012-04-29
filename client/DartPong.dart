@@ -25,7 +25,7 @@ class DartPong {
   }
 
   void run() {
-    Ball ball = new Ball( 'ball', 300, 300, 10, 10, 6, 1, null );
+    Ball ball = new Ball( 'ball', 300, 300, 10, 10, 6, 1 );
     
     // tu referenci na ball bych mel asi rano vymyslet lepeji
     
@@ -33,34 +33,44 @@ class DartPong {
     List<CollisionObject> handlers = new List<CollisionObject>();
     List<CollisionObject> killingZones = new List<CollisionObject>();
     
-    Handler leftHandler  = new VerticalHandler( 'left_handler', 10, 300, 10, 100, 0, 30 , ball);
+    Handler leftHandler  = new VerticalHandler( 'left_handler', 10, 300, 10, 100, 0, 30 );
     map.add(leftHandler);
     handlers.add(leftHandler);
-    Handler rightHandler = new VerticalHandler( 'right_handler', 780, 300, 10, 100, 0, 30 , ball);
+    Handler rightHandler = new VerticalHandler( 'right_handler', 780, 300, 10, 100, 0, 30 );
     map.add(rightHandler);
     handlers.add(rightHandler);
-    Handler bottomHandler = new HorizontalHandler( 'bottom_handler', 350, 580, 100, 10, 0, 30 , ball);
+    Handler bottomHandler = new HorizontalHandler( 'bottom_handler', 350, 580, 100, 10, 0, 30 );
     map.add(bottomHandler);
     handlers.add(bottomHandler);
-    Handler topHandler = new HorizontalHandler( 'top_handler', 350, 10, 100, 10, 0, 30 , ball);
+    Handler topHandler = new HorizontalHandler( 'top_handler', 350, 10, 100, 10, 0, 30 );
     map.add(topHandler);
     handlers.add(topHandler);
     
-    CollisionObject leftWall = new KillingZone( 'left_wall', 0, 0, 1, 600, 0, 0, ball, leftHandler );
+    CollisionObject leftWall = new KillingZone( 'left_wall', 0, 0, 1, 600, 0, 0, leftHandler );
     map.add(leftWall);   
     killingZones.add(leftWall);   
-    CollisionObject topWall = new KillingZone( 'top_wall', 0, 0, 800, 1, 0, 0, ball, topHandler );
+    CollisionObject topWall = new KillingZone( 'top_wall', 0, 0, 800, 1, 0, 0, topHandler );
     map.add(topWall);
     killingZones.add(topWall);
-    CollisionObject rightWall = new KillingZone( 'right_wall', 800, 0, 1, 600, 0, 0, ball, rightHandler );
+    CollisionObject rightWall = new KillingZone( 'right_wall', 800, 0, 1, 600, 0, 0, rightHandler );
     map.add(rightWall);
     killingZones.add(rightWall);
-    CollisionObject bottomWall = new KillingZone( 'bottom_wall', 0, 600, 800, 1, 0, 0, ball, bottomHandler );
+    CollisionObject bottomWall = new KillingZone( 'bottom_wall', 0, 600, 800, 1, 0, 0, bottomHandler );
     map.add(bottomWall);
     killingZones.add(bottomWall);
     
     
     Arena arena = new Arena( map, ball );
+    
+    leftHandler.arena = arena;
+    rightHandler.arena = arena;
+    bottomHandler.arena = arena;
+    topHandler.arena = arena;
+    
+    leftWall.arena = arena;
+    rightWall.arena = arena;
+    bottomWall.arena = arena;
+    topWall.arena = arena;
     
     Renderer renderer = new Renderer( arena, container, handlers, killingZones );
     renderer.initRender();

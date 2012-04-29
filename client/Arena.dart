@@ -15,6 +15,12 @@ class Arena {
     });
   }
   
+  startNewGame() {
+    ball.x = 300.0;
+    ball.y = 300.0;
+    ball.speed = 1.0;
+  }
+  
   // v tuto chvili jen u micku
   changePositions() {
     ball.changePosition();
