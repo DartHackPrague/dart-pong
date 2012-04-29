@@ -8,7 +8,7 @@ class Arena {
   checkCollisions() {
     collisionObjects.forEach((collisionObject) {
       //document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>${collisionObject.x}';
-        if (ball.isCollisionWith(collisionObject)) {
+        if (ball.isCollisionWith(collisionObject) && ball.available) {
           ball.onCollisionWith(collisionObject);
           collisionObject.onCollisionWith(ball);
         }
@@ -19,6 +19,15 @@ class Arena {
     ball.x = 300.0;
     ball.y = 300.0;
     ball.speed = 1.0;
+  }
+  
+  teleportBallOut() {
+    print('Teleport OUT');
+    ball.available = false;
+  }
+  
+  teleportBallIn() {
+    print('Teleport IN');
   }
   
   int getWidth() {
@@ -45,7 +54,7 @@ class Arena {
   
   // v tuto chvili jen u micku
   changePositions() {
-    ball.changePosition();
+    if (ball.available) ball.changePosition();
   }
   
 }
