@@ -4,14 +4,28 @@ class Renderer {
   List<CollisionObject> handlers;
   List<CollisionObject> killingZones;
   
+  int state = 0;
+  List states;
+  
   Renderer(Arena this.arena, Element this.container, List<CollisionObject> this.handlers, List<CollisionObject> this.killingZones);
   
   initRender() {
+    states = ['rN', 'rW', 'rS', 'rE'];
+    
     arena.collisionObjects.forEach((collisionObject) {
       renderCollisionObject(collisionObject);
     });
     
     renderCollisionObject(arena.ball);
+  }
+  
+  String getState() {
+    state++;
+    if (state > 3) {
+      state = 0;
+    }
+    
+    return states[state];
   }
   
   render() {
@@ -20,6 +34,11 @@ class Renderer {
     killingZones.forEach((handler) {
       if (handler.killedRightNow) {
         handler.killedRightNow = false;
+        
+        states.forEach((s) {
+          container.classes.remove(s);
+        });
+        container.classes.add(getState());
         
         document.query('#${handler.id}').classes.add('killed');
         window.setTimeout(() {
