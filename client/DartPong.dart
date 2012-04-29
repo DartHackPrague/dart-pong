@@ -9,6 +9,7 @@
 #source('VerticalHandler.dart');
 #source('HorizontalHandler.dart');
 #source('HandlerListener.dart');
+#source('KillingZone.dart');
 
 
 void main() {
@@ -29,24 +30,34 @@ class DartPong {
     // tu referenci na ball bych mel asi rano vymyslet lepeji
     
     List<CollisionObject> map = new List<CollisionObject>();
-    map.add(new CollisionObject( 'leva_stena', 0, 0, 1, 600, 0, 0, ball ));
-    map.add(new CollisionObject( 'horni_stena', 0, 0, 800, 1, 0, 0, ball ));
-    map.add(new CollisionObject( 'prava_stena', 800, 0, 1, 600, 0, 0, ball ));
-    map.add(new CollisionObject( 'spodni_stena', 0, 600, 800, 1, 0, 0, ball ));
+    List<CollisionObject> handlers = new List<CollisionObject>();
     
     Handler leftHandler  = new VerticalHandler( 'left_handler', 10, 300, 10, 100, 0, 10 , ball);
     map.add(leftHandler);
+    handlers.add(leftHandler);
     Handler rightHandler = new VerticalHandler( 'right_handler', 780, 300, 10, 100, 0, 10 , ball);
     map.add(rightHandler);
+    handlers.add(rightHandler);
     Handler bottomHandler = new HorizontalHandler( 'bottom_handler', 350, 580, 100, 10, 0, 10 , ball);
     map.add(bottomHandler);
+    handlers.add(bottomHandler);
     Handler topHandler = new HorizontalHandler( 'top_handler', 350, 10, 100, 10, 0, 10 , ball);
     map.add(topHandler);
+    handlers.add(topHandler);
+    
+    CollisionObject leftWall = new KillingZone( 'left_wall', 0, 0, 1, 600, 0, 0, ball, leftHandler );
+    map.add(leftWall);    
+    CollisionObject topWall = new KillingZone( 'top_wall', 0, 0, 800, 1, 0, 0, ball, topHandler );
+    map.add(topWall);
+    CollisionObject rightWall = new KillingZone( 'right_wall', 800, 0, 1, 600, 0, 0, ball, rightHandler );
+    map.add(rightWall);
+    CollisionObject bottomWall = new KillingZone( 'bottom_wall', 0, 600, 800, 1, 0, 0, ball, bottomHandler );
+    map.add(bottomWall);
     
     
     Arena arena = new Arena( map, ball );
     
-    Renderer renderer = new Renderer( arena, container );
+    Renderer renderer = new Renderer( arena, container, handlers );
     renderer.initRender();
     
     HandlerListener leftHandlerListener  = new HandlerListener(leftHandler, 38, 40, renderer);

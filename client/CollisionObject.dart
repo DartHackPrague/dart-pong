@@ -9,9 +9,6 @@ class CollisionObject {
   CollisionObject(this.id, this.x, this.y, this.width, this.height, this.direction, this.speed, this.ball);
   
   void onCollisionWith(CollisionObject o) {
-    ball.x = 300.0;
-    ball.y = 300.0;
-    ball.speed = 1.0;
   }
   
   

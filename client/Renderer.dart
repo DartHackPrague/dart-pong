@@ -1,8 +1,9 @@
 class Renderer {
   Arena arena;
   Element container;
+  List<CollisionObject> handlers;
   
-  Renderer(Arena this.arena, Element this.container);
+  Renderer(Arena this.arena, Element this.container, List<CollisionObject> this.handlers);
   
   initRender() {
     arena.collisionObjects.forEach((collisionObject) {
@@ -19,6 +20,19 @@ class Renderer {
   renderCollisionObject(CollisionObject o) {
     Element e = getHTMLElementFromCollisionObject(o);
     container.nodes.add(e); 
+  }
+  
+  renderResults() {
+    num i = 0;
+    StringBuffer text = new StringBuffer();
+    
+    handlers.forEach((handler) {
+      i++;
+      
+      text.add('Player ${i}: ${handler.countOfDeaths}<br/>');
+    });
+    
+    document.query('#results').innerHTML = text.toString();
   }
   
   getHTMLElementFromCollisionObject(CollisionObject o) {

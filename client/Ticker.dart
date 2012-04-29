@@ -27,5 +27,8 @@ class Ticker {
     
     renderer.render();
     renderer.moveCollisionObject(arena.ball);
+    
+    //to nemusim delat tak casto
+    renderer.renderResults();
   }
 }
