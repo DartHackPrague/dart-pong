@@ -1,11 +1,11 @@
 class Ball extends CollisionObject {
   Ball(id, x, y, width, height, direction, speed, ball) : super(id, x, y, width, height, direction, speed, ball);
   
-  static double flipAngleHorizontal(double alpha) {
+  static double flipAngleVertical(double alpha) {
     return Math.PI - alpha;
   }
   
-  static double flipAngleVrtical(double alpha) {
+  static double flipAngleHorizontal(double alpha) {
     return 2*Math.PI - alpha;
   }
   
@@ -13,6 +13,15 @@ class Ball extends CollisionObject {
     
     // bounce
     print('Collision BALL');
+
+    if (this.x > o.x && this.x+this.width < o.x+o.width) {
+      this.direction = flipAngleHorizontal(this.direction);
+    } else {
+      this.direction = flipAngleVertical(this.direction);
+    }
+    
+    
+    /*
     // top
     if (this.y < o.y+o.height && this.y+this.height > o.y+o.height && this.x+this.width > o.x && o.x+o.width > this.x) {
       this.direction = 2*Math.PI - this.direction;
@@ -33,7 +42,7 @@ class Ball extends CollisionObject {
       this.direction = Math.PI - this.direction; 
     } 
 
-    
+    */
     
   }
   
