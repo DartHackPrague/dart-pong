@@ -37,12 +37,18 @@ class Arena {
       
       this.websocket.send(JSON.stringify(msg));
     }
-    
-    
+
   }
   
-  teleportBallIn() {
+  teleportBallIn(PongMessage msg) {
     print('Teleport IN');
+    ball.x = this.getWidth() - ball.x;
+    ball.y = msg.y;
+    ball.speed = msg.speed;
+    ball.direction = msg.direction;
+
+    ball.setAsIn();
+    
   }
   
   int getWidth() {
