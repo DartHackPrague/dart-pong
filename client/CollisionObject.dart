@@ -9,6 +9,7 @@ class CollisionObject {
   CollisionObject(this.id, this.x, this.y, this.width, this.height, this.direction, this.speed, this.ball);
   
   void onCollisionWith(CollisionObject o) {
+    // print('collision');
   }
   
   
@@ -18,17 +19,31 @@ class CollisionObject {
       this.y += this.speed * Math.sin(this.direction);
     }
   }
-  
+    
   bool isCollisionWith(CollisionObject o) { // kulicka + mozne dalsi objekty
+   
+    return
+        this.x + this.width > o.x
+        && this.x < o.x + o.width
+        && this.y + this.height > o.y
+        && this.y < o.y + o.height;
+    
+    
+    
+    /*
     // top
     if (this.y < o.y+o.height && this.y+this.height > o.y+o.height && this.x+this.width > o.x && o.x+o.width > this.x) {
       //document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>TOP';
+      print('T');
+
       return true;
     } 
 
     // bottom
     if (this.y+this.height > o.y && this.y+this.height < o.y+o.height && this.x+this.width > o.x && o.x+o.width > this.x.ceil()) {
       //document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>BOTTOM';
+      print('B');
+
       return true;
     } 
   
@@ -36,6 +51,8 @@ class CollisionObject {
     // left
     if (this.x < o.x+o.width && this.x>o.x && this.y+this.height > o.y && this.y < o.y+o.height) {
       //document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>LEFT';
+      print('L');
+
       return true;      
     } 
 
@@ -43,10 +60,13 @@ class CollisionObject {
     // right
     if (this.x+this.width > o.x && this.x+this.width<o.x+o.width && this.y+this.height > o.y && this.y < o.y+o.height) {
       //document.query('#dump').innerHTML = document.query('#dump').innerHTML + '<br>RIGHT';
+      
+      print('R');
       return true;      
     } 
     
     return false;
+    */
     
     /*
     
