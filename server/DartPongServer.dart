@@ -4,6 +4,8 @@
 void main() {
   
   int clients;
+  WebSocketConnection conn1;
+  WebSocketConnection conn2;
   
   HttpServer server = new HttpServer();
   WebSocketHandler wsHandler = new WebSocketHandler();
@@ -11,6 +13,11 @@ void main() {
   
   wsHandler.onOpen = (WebSocketConnection conn) {
     print('new connection');
+    if (conn1 == null) {
+      conn1 = conn;
+    } else {
+      conn2 = conn;
+    }
     
     conn.onMessage = (message) {
       var parsedMsg = JSON.parse(message);
@@ -21,11 +28,13 @@ void main() {
         result['type'] = 1;
         result['numberOfClients'] = clients;
         result['message'] = 'One player is waiting for opponent.';
-        conn.send(JSON.stringify(result));
+        conn1.send(JSON.stringify(result));
+        conn2.send(JSON.stringify(result));
       }
       if (parsedMsg['type'] == 2) {
         print('Ball crosses the teleport zone with x = ' + parsedMsg['x'] + ', y = ' + parsedMsg['y']);
-        conn.send(message);
+        conn1.send(message);
+        conn2.send(message);
       }
       
     };
@@ -35,7 +44,8 @@ void main() {
       var result = {};
       result['type'] = 3;
       result['message'] = 'Someone left the game.';
-      conn.send(JSON.stringify(result));
+      conn1.send(JSON.stringify(result));
+      conn2.send(JSON.stringify(result));
     };
           
     conn.onError = (e) {
@@ -43,7 +53,8 @@ void main() {
       var result = {};
       result['type'] = 4;
       result['message'] = 'Error has occured.';
-      conn.send(JSON.stringify(result));
+      conn1.send(JSON.stringify(result));
+      conn2.send(JSON.stringify(result));
     };
   };
   print('WebSocket server is running...');
