@@ -81,7 +81,7 @@ body, html {
 	right: 20px;
 }
 
-.infoBox p {
+#infoBox p {
 	background: rgba(0, 255, 0, .2);
 	padding: 20px;
 	margin: 0 0 20px 0;
