@@ -16,7 +16,7 @@ void main() {
       var parsedMsg = JSON.parse(message);
       var result = {};
       if (parsedMsg['type'] == 1) {
-        print('Name of player ' + parsedMsg['name']);
+        print(parsedMsg['name'] + ' has joined to the game.');
         clients.add(parsedMsg['name']);
         
         result['type'] = 1;
@@ -25,7 +25,6 @@ void main() {
       }
       if (parsedMsg['type'] == 2) {
         print('Ball crosses the teleport zone with x = ' + parsedMsg['x'] + ', y = ' + parsedMsg['y']);
-        clients.add(parsedMsg['name']);
         conn.send(message);
       }
       
