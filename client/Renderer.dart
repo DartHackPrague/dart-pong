@@ -67,4 +67,17 @@ class Renderer {
     element.style.left = '${o.x}px';
     element.style.top = '${o.y}px';
   }
+  
+  
+  /* TODO: JAK JE ZAVOLAT Z ARENY? */
+  hideCollisionObject(CollisionObject o) {
+    Element element = document.query('#${o.id}');
+    element.style.visibility = 'hidden';
+  }
+  
+  showCollisionObject(CollisionObject o) {
+    Element element = document.query('#${o.id}');
+    element.style.visibility = 'visible';
+  }
+
 }

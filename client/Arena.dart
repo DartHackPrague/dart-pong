@@ -24,10 +24,12 @@ class Arena {
   
   teleportBallOut() {
     print('Teleport OUT');
+    ball.setAsOut();
     
     if (this.websocket != null) {
     
       PongMessage msg = new PongMessage();
+      msg.type = 1;
       msg.speed = ball.speed;
       msg.direction = ball.direction;
       msg.x = ball.x;
