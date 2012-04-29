@@ -33,16 +33,16 @@ class DartPong {
     List<CollisionObject> handlers = new List<CollisionObject>();
     List<CollisionObject> killingZones = new List<CollisionObject>();
     
-    Handler leftHandler  = new VerticalHandler( 'left_handler', 10, 300, 10, 100, 0, 10 , ball);
+    Handler leftHandler  = new VerticalHandler( 'left_handler', 10, 300, 10, 100, 0, 30 , ball);
     map.add(leftHandler);
     handlers.add(leftHandler);
-    Handler rightHandler = new VerticalHandler( 'right_handler', 780, 300, 10, 100, 0, 10 , ball);
+    Handler rightHandler = new VerticalHandler( 'right_handler', 780, 300, 10, 100, 0, 30 , ball);
     map.add(rightHandler);
     handlers.add(rightHandler);
-    Handler bottomHandler = new HorizontalHandler( 'bottom_handler', 350, 580, 100, 10, 0, 10 , ball);
+    Handler bottomHandler = new HorizontalHandler( 'bottom_handler', 350, 580, 100, 10, 0, 30 , ball);
     map.add(bottomHandler);
     handlers.add(bottomHandler);
-    Handler topHandler = new HorizontalHandler( 'top_handler', 350, 10, 100, 10, 0, 10 , ball);
+    Handler topHandler = new HorizontalHandler( 'top_handler', 350, 10, 100, 10, 0, 30 , ball);
     map.add(topHandler);
     handlers.add(topHandler);
     
