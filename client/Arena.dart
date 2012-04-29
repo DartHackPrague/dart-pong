@@ -27,26 +27,30 @@ class Arena {
     ball.setAsOut();
     
     if (this.websocket != null) {
-    
-      PongMessage msg = new PongMessage();
-      msg.type = 1;
-      msg.speed = ball.speed;
-      msg.direction = ball.direction;
-      msg.x = ball.x;
-      msg.y = ball.y;
+      var msg = {};
+      msg['type'] = 2;
+      msg['speed'] = ball.speed;
+      msg['direction'] = ball.direction;
+      msg['x'] = ball.x;
+      msg['y'] = ball.y;
       
       this.websocket.send(JSON.stringify(msg));
     }
 
   }
   
-  teleportBallIn(PongMessage msg) {
+  teleportBallIn(msg) {print(msg);
     print('Teleport IN');
-    ball.x = this.getWidth() - ball.x;
-    ball.y = msg.y;
-    ball.speed = msg.speed;
-    ball.direction = msg.direction;
+    if (msg['x'] > 300) {
+      ball.x = 40.0;
+    } else {
+      ball.x = 560.0;
+    }
 
+    ball.y = msg['y'];
+    ball.speed = msg['speed'];
+    ball.direction = Math.PI - msg['direction'];
+    
     ball.setAsIn();
     
   }
@@ -75,7 +79,7 @@ class Arena {
   
   // v tuto chvili jen u micku
   changePositions() {
-    if (ball.available) ball.changePosition();
+    if (ball.available == true) ball.changePosition();
   }
   
 }

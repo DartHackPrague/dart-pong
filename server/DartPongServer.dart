@@ -36,7 +36,7 @@ void main() {
       if (parsedMsg['type'] == 2) {
         print('Ball crosses the teleport zone with x = ' + parsedMsg['x'] + ', y = ' + parsedMsg['y']);
         conns.forEach((c) {
-          c.send(message);
+          c.send(JSON.stringify(parsedMsg));
         });
       }
       

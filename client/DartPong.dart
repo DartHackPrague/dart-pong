@@ -145,7 +145,7 @@ class DartPong {
     
     
     
-    arena = new Arena( map, ball );
+    arena = new Arena( map, ball, ws );
     
     handler.arena = arena;
     

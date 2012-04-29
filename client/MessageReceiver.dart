@@ -16,13 +16,13 @@ class MessageReceiver {
   
   onMessage(e) {
     var data = JSON.parse(e.data);
-    
+    print(data['type']);
     if (data['type'] == 1) {
       fetchNumberOfPlayers(data);
     }
     
     if (data['type'] == 2) {
-      fetchNumberOfPlayers(data);
+      showBall(data);
     }
   }
   
@@ -31,14 +31,20 @@ class MessageReceiver {
   }
   
   fetchNumberOfPlayers(data) {
-    dartPong.prepareGameForMultiplayer(data['numberOfClients'] > 1 ? 2 : 1);
-    
     if (data['numberOfClients'] > 1 && dartPong.multiplayerId == 1) {
       dartPong.arena.ball.setAsIn();
+    } else {
+      dartPong.prepareGameForMultiplayer(data['numberOfClients'] > 1 ? 2 : 1); 
     }
   }
   
   showBall(data) {
-    //dartPong.arena.
+    if (data['x'] > 500 && dartPong.multiplayerId == 1) {
+      dartPong.arena.teleportBallIn(data);
+    }
+    
+    if (data['x'] < 100 && dartPong.multiplayerId == 2) {
+      dartPong.arena.teleportBallIn(data);
+    }
   }
 }
