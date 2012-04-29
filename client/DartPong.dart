@@ -21,7 +21,9 @@ void main() {
 }
 
 class DartPong {
+  int multiplayerId;
   WebSocket ws;
+  Arena arena;
   
   Element container;
   bool isMultiplayer = false;
@@ -67,7 +69,7 @@ class DartPong {
     map.add(test);
     
     
-    Arena arena = new Arena( map, ball );
+    arena = new Arena( map, ball );
     
     leftHandler.arena = arena;
     rightHandler.arena = arena;
@@ -94,56 +96,70 @@ class DartPong {
   void runMultiPlayer()
   {
     ws = new WebSocket("ws://localhost:3000/ws");
-    //MessageReceiver receiver = new MessageReceiver(ws);
-
+    MessageReceiver receiver = new MessageReceiver(ws, this);
+   
     ws.on.open.add(send);
-  }
+  }  
   
   send(e) {
-    ws.send( JSON.stringify({'name' : 'Pavel' }) );
+    ws.send( JSON.stringify({'type': 1, 'name' : 'Pavel' }) );
   }
   
-  void prepareGameForMultiplayer(num i) {
+  void prepareGameForMultiplayer(int number) {
+    multiplayerId = number;
+    
     Ball ball = new Ball( 'ball', 300, 300, 10, 10, 6, 1 );
     
     List<CollisionObject> map = new List<CollisionObject>();
     List<CollisionObject> handlers = new List<CollisionObject>();
     List<CollisionObject> killingZones = new List<CollisionObject>();
     
-    Handler leftHandler  = new VerticalHandler( 'left_handler', 10, 300, 10, 100, 0, 30 );
-    map.add(leftHandler);
-    handlers.add(leftHandler);
-    Handler rightHandler = new VerticalHandler( 'right_handler', 580, 300, 10, 100, 0, 30 );
-    map.add(rightHandler);
-    handlers.add(rightHandler);
+    Handler handler;
+    if (number == 1) {
+      handler = new VerticalHandler( 'right_handler', 580, 300, 10, 100, 0, 30 );
+    } else {
+      handler  = new VerticalHandler( 'left_handler', 10, 300, 10, 100, 0, 30 );
+    }
+    map.add(handler);
+    handlers.add(handler);
     
-    CollisionObject leftWall = new TeleportZone( 'left_wall', 0, 0, 1, 600, 0, 0);
-    map.add(leftWall);
+    CollisionObject teleport;
+    CollisionObject killingZone;
+    
+    if (number == 1) {
+      teleport = new TeleportZone( 'left_wall', 0, 0, 1, 600, 0, 0);
+      killingZone = new KillingZone( 'right_wall', 600, 0, 1, 600, 0, 0, handler );
+    } else {
+      teleport = new TeleportZone( 'right_wall', 600, 0, 1, 600, 0, 0 );
+      killingZone = new KillingZone(  'left_wall', 0, 0, 1, 600, 0, 0 , handler );
+    }
+    
+    map.add(teleport);
+    map.add(killingZone);
+    killingZones.add(killingZone);
        
     CollisionObject topWall = new CollisionObject( 'top_wall', 0, 0, 600, 1, 0, 0 );
     map.add(topWall);
     CollisionObject bottomWall = new CollisionObject( 'bottom_wall', 0, 600, 600, 1, 0, 0 );
     map.add(bottomWall);
     
-    CollisionObject rightWall = new KillingZone( 'right_wall', 600, 0, 1, 600, 0, 0, rightHandler );
-    map.add(rightWall);
-    killingZones.add(rightWall);
     
-    Arena arena = new Arena( map, ball );
     
-    leftHandler.arena = arena;
-    rightHandler.arena = arena;
+    arena = new Arena( map, ball );
     
-    leftWall.arena = arena;
-    rightWall.arena = arena;
+    handler.arena = arena;
+    
+    teleport.arena = arena;
+    killingZone.arena = arena;
     bottomWall.arena = arena;
     topWall.arena = arena;
     
     Renderer renderer = new Renderer( arena, container, handlers, killingZones );
     renderer.initRender();
     
-    HandlerListener leftHandlerListener  = new HandlerListener(leftHandler, 38, 40, renderer);
-    HandlerListener rightHandlerListener = new HandlerListener(rightHandler, 83, 88, renderer);
+    ball.setAsOut();
+    
+    HandlerListener leftHandlerListener  = new HandlerListener(handler, 38, 40, renderer);
     
     Ticker ticker = new Ticker( 10, arena, renderer, window );
     ticker.start();

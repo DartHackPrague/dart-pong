@@ -13,13 +13,17 @@ void main() {
   
   wsHandler.onOpen = (WebSocketConnection conn) {
     print('new connection');
+    print(conn);
+    
     if (conn1 == null) {
       conn1 = conn;
-    } else {
+    } else if (conn2 == null && conn != conn1) {
       conn2 = conn;
     }
     
     conn.onMessage = (message) {
+      return;
+      
       var parsedMsg = JSON.parse(message);
       var result = {};
       if (parsedMsg['type'] == 1) {
@@ -28,7 +32,9 @@ void main() {
         result['type'] = 1;
         result['numberOfClients'] = clients;
         result['message'] = 'One player is waiting for opponent.';
+        
         conn1.send(JSON.stringify(result));
+       
         if(conn2 != null) {
           conn2.send(JSON.stringify(result));
         }
