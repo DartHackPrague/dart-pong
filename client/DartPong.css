@@ -40,6 +40,30 @@ body, html {
 #mainAppContainer {
 	margin: 20px;
 	position: relative;
+	/*
+	-webkit-animation-name: animateArena;
+	-webkit-animation-duration: 5s;
+	-webkit-animation-iteration-count: infinite;
+	*/
+}
+
+#mainAppContainer.rN {
+	-webkit-transform: scale() rotate(0) translate(px, px) skew(deg, deg);
+	-webkit-transition: all 3s ease-in;
+}
+
+#mainAppContainer.rW {
+	-webkit-transform: scale() rotate(90deg) translate(px, px) skew(deg, deg);
+	-webkit-transition: all 3s ease-in;
+}
+
+#mainAppContainer.rS {
+	-webkit-transform: scale() rotate(180deg) translate(px, px) skew(deg, deg);
+	-webkit-transition: all 3s ease-in;
+}
+#mainAppContainer.rE {
+	-webkit-transform: scale() rotate(270deg) translate(px, px) skew(deg, deg);
+	-webkit-transition: all 3s ease-in;
 }
 
 .infoBox {
@@ -58,21 +82,47 @@ body, html {
 }
 
 .handler {
-	-webkit-transition: top .5s left .5s;
-
-	
+	-webkit-transition: all .5s;
 	-webkit-animation-name: animateHandler;
-	-webkit-animation-duration: 0.5s;
+	-webkit-animation-duration: 1s;
 	-webkit-animation-iteration-count: infinite;
+	-webkit-border-radius: 5px;
 }
 
 @-webkit-keyframes animateHandler
 {
-  0% {
-    -webkit-box-shadow: 0px 0px 2px 2px rgba(0,255,255,.1);
-  }
+	0% {
+		-webkit-box-shadow: 0px 0px 2px 2px rgba(0,255,0,.1);
+	}
 
-  100% {
-     -webkit-box-shadow: 0px 0px 2px 2px rgba(0,255,255,.5);
-  }
+	25% {
+		-webkit-box-shadow: 0px 0px 5px 2px rgba(0,255,0,.5);
+	}
+
+	50% {
+		-webkit-box-shadow: 0px 0px 20px 2px rgba(0,255,0,1);
+	}
+
+	75% {
+		-webkit-box-shadow: 0px 0px 5px 2px rgba(0,255,0,.5);
+	}
+
+	100% {
+		-webkit-box-shadow: 0px 0px 2px 2px rgba(0,255,0,.1);
+	}
+}
+
+@-webkit-keyframes animateArena
+{
+	0% {
+		-webkit-transform: rotate(0);
+	}
+
+	50% {
+		-webkit-transform: rotate(180deg);
+	}
+	
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
 }
