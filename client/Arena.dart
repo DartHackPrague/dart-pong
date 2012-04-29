@@ -21,6 +21,28 @@ class Arena {
     ball.speed = 1.0;
   }
   
+  int getWidth() {
+    int maxWidth = 0;
+    collisionObjects.forEach((collisionObject) {
+      if (collisionObject.x > maxWidth) {
+        maxWidth = collisionObject.x;
+      }
+    });
+    
+    return maxWidth;
+  }
+  
+  int getHeight() {
+    int maxHeight = 0;
+    collisionObjects.forEach((collisionObject) {
+      if (collisionObject.y > maxHeight) {
+        maxHeight = collisionObject.y;
+      }
+    });
+    
+    return maxHeight;
+  }
+  
   // v tuto chvili jen u micku
   changePositions() {
     ball.changePosition();
