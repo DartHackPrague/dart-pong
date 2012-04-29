@@ -14,7 +14,7 @@ class MessageReceiver {
     ws.on.message.add( onMessage );
   }
   
-  onMessage(e) {print('f');return;
+  onMessage(e) {
     var data = JSON.parse(e.data);
     
     if (data['type'] == 1) {
