@@ -15,11 +15,19 @@ class CollisionObject {
   
   void changePosition() {  // vymyslet mozne prejmenovani
     if (this.speed != 0.0) {
-      this.x += this.speed * Math.cos(this.direction);
-      this.y += this.speed * Math.sin(this.direction);
+      this.x = this.getNextX();
+      this.y = this.getNextY();
     }
   }
-    
+  
+  double getNextX() {
+    return this.x + this.speed * Math.cos(this.direction);
+  }
+  
+  double getNextY() {
+    return this.y + this.speed * Math.sin(this.direction);
+  }
+  
   bool isCollisionWith(CollisionObject o) { // kulicka + mozne dalsi objekty
    
     return
