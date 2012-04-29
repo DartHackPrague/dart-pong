@@ -3,7 +3,7 @@ class CollisionObject {
   String id;
   double x, y, direction, speed; // TODO: speed zatim px/tick, lepe spocitat z kontanty 
   int width, height;
-  bool visible;
+  bool visible, available = true;
 
   
   CollisionObject(this.id, this.x, this.y, this.width, this.height, this.direction, this.speed);

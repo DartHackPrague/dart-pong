@@ -10,6 +10,7 @@
 #source('HorizontalHandler.dart');
 #source('HandlerListener.dart');
 #source('KillingZone.dart');
+#source('TeleportZone.dart');
 
 
 void main() {
@@ -100,9 +101,11 @@ class DartPong {
     map.add(topHandler);
     handlers.add(topHandler);
     
-    CollisionObject leftWall = new KillingZone( 'left_wall', 0, 0, 1, 600, 0, 0, leftHandler );
-    map.add(leftWall);   
-    killingZones.add(leftWall);   
+    // CollisionObject leftWall = new KillingZone( 'left_wall', 0, 0, 1, 600, 0, 0, leftHandler );
+    // map.add(leftWall);
+    CollisionObject leftWall = new TeleportZone( 'left_wall', 0, 0, 1, 600, 0, 0);
+    map.add(leftWall);
+       
     CollisionObject topWall = new KillingZone( 'top_wall', 0, 0, 600, 1, 0, 0, topHandler );
     map.add(topWall);
     killingZones.add(topWall);
