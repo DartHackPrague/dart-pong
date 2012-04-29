@@ -72,7 +72,7 @@ body, html {
 	-webkit-transition: all 3s ease-in;
 }
 
-.infoBox {
+#infoBox {
 	font-family: monospace;
 	color: #0f0;
 	width: 200px;
