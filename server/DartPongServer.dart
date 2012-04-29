@@ -29,12 +29,16 @@ void main() {
         result['numberOfClients'] = clients;
         result['message'] = 'One player is waiting for opponent.';
         conn1.send(JSON.stringify(result));
-        conn2.send(JSON.stringify(result));
+        if(conn2 != null) {
+          conn2.send(JSON.stringify(result));
+        }
       }
       if (parsedMsg['type'] == 2) {
         print('Ball crosses the teleport zone with x = ' + parsedMsg['x'] + ', y = ' + parsedMsg['y']);
         conn1.send(message);
-        conn2.send(message);
+        if(conn2 != null) {
+          conn2.send(message);
+        }
       }
       
     };
@@ -45,7 +49,9 @@ void main() {
       result['type'] = 3;
       result['message'] = 'Someone left the game.';
       conn1.send(JSON.stringify(result));
-      conn2.send(JSON.stringify(result));
+      if(conn2 != null) {
+        conn2.send(JSON.stringify(result));
+      }
     };
           
     conn.onError = (e) {
@@ -54,7 +60,9 @@ void main() {
       result['type'] = 4;
       result['message'] = 'Error has occured.';
       conn1.send(JSON.stringify(result));
-      conn2.send(JSON.stringify(result));
+      if(conn2 != null) {
+        conn2.send(JSON.stringify(result));
+      }
     };
   };
   print('WebSocket server is running...');
