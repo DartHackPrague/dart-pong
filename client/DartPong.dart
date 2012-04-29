@@ -1,4 +1,5 @@
 #import('dart:html');
+#import('dart:json');
 
 #source('Renderer.dart');
 #source('Ticker.dart');
@@ -11,6 +12,7 @@
 #source('HandlerListener.dart');
 #source('KillingZone.dart');
 #source('TeleportZone.dart');
+#source('PongMessage.dart');
 
 
 void main() {
