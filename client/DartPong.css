@@ -52,11 +52,11 @@ body, html {
 	margin: 120px auto;
 	position: relative;
 	width: 600px;
-	
+	/*
 	-webkit-animation-name: animateArena;
 	-webkit-animation-duration: 5s;
 	-webkit-animation-iteration-count: infinite;
-	
+	*/
 	-webkit-transform-origin: 300px 300px;
 }
 
