@@ -1,9 +1,10 @@
 class Arena {
   List<CollisionObject> collisionObjects;
-  
+  WebSocket websocket;
   Ball ball;
   
-  Arena( this.collisionObjects, this.ball );
+  Arena( this.collisionObjects, this.ball, [this.websocket=null]) {
+  }
   
   checkCollisions() {
     collisionObjects.forEach((collisionObject) {
@@ -23,7 +24,21 @@ class Arena {
   
   teleportBallOut() {
     print('Teleport OUT');
-    ball.available = false;
+    ball.setAsOut();
+    
+    if (this.websocket != null) {
+    
+      PongMessage msg = new PongMessage();
+      msg.type = 1;
+      msg.speed = ball.speed;
+      msg.direction = ball.direction;
+      msg.x = ball.x;
+      msg.y = ball.y;
+      
+      this.websocket.send(JSON.stringify(msg));
+    }
+    
+    
   }
   
   teleportBallIn() {

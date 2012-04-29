@@ -16,4 +16,19 @@ class Ball extends CollisionObject {
       this.direction = flipAngleVertical(this.direction);
     }  
   }
+  
+  void setAsOut(){
+    this.available = false;
+    this.visible = false;
+    Element element = document.query('#${this.id}'); // TODO: duplicitni kod k tom metodam v rendereru, ktere neumim volat
+    element.style.visibility = 'hidden';// TODO: duplicitni kod k tom metodam v rendereru, ktere neumim volat
+  }
+  
+  void setAsIn(){
+    this.available = true;
+    this.visible = true;
+    Element element = document.query('#${this.id}'); // TODO: duplicitni kod k tom metodam v rendereru, ktere neumim volat
+    element.style.visibility = 'visible'; // TODO: duplicitni kod k tom metodam v rendereru, ktere neumim volat
+  }
+  
 }

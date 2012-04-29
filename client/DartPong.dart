@@ -1,4 +1,5 @@
 #import('dart:html');
+#import('dart:json');
 
 #source('Renderer.dart');
 #source('Ticker.dart');
@@ -12,6 +13,7 @@
 #source('KillingZone.dart');
 #source('TeleportZone.dart');
 #source('MessageReceiver.dart');
+#source('PongMessage.dart');
 
 void main() {
   Element container =  document.query('#mainAppContainer'); // TODO: vypeknit
@@ -19,6 +21,8 @@ void main() {
 }
 
 class DartPong {
+  WebSocket ws;
+  
   Element container;
   bool isMultiplayer = false;
   
@@ -89,10 +93,14 @@ class DartPong {
   
   void runMultiPlayer()
   {
-    WebSocket ws = new WebSocket("ws://localhost:3000");
-    MessageReceiver receiver = new MessageReceiver(ws);
-    
-    ws.send(data);
+    ws = new WebSocket("ws://localhost:3000/ws");
+    //MessageReceiver receiver = new MessageReceiver(ws);
+
+    ws.on.open.add(send);
+  }
+  
+  send(e) {
+    ws.send( JSON.stringify({'name' : 'Pavel' }) );
   }
   
   void prepareGameForMultiplayer(num i) {
