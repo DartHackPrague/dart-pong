@@ -36,4 +36,8 @@ class CollisionObject {
         && this.y + this.height > o.y
         && this.y < o.y + o.height;
   }
+  
+  String getCssClass() {
+    return '';
+  }
 }

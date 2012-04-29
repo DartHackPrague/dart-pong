@@ -50,7 +50,10 @@ class Renderer {
   getHTMLElementFromCollisionObject(CollisionObject o) {
     Element e = new Element.tag('div');
     e.attributes['id'] = o.id;
+    
+    e.classes.add(o.getCssClass());
     e.classes.add('colision_object');
+    
     e.style.width = '${o.width}px';
     e.style.height = '${o.height}px';
     e.style.top = '${o.y}px';

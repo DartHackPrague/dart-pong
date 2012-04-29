@@ -14,5 +14,9 @@ class Handler extends CollisionObject {
     if (arena != null) {
       arena.ball.speed += 1;
     }
-  } 
+  }
+  
+  String getCssClass() {
+    return 'handler';
+  }
 }
