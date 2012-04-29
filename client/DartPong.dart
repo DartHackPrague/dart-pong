@@ -71,8 +71,10 @@ class DartPong {
     map.add(bottomWall);
     killingZones.add(bottomWall);
     
-    CollisionObject test = new CollisionObject( 'test', 350, 350, 100, 100, 0, 0 );
-    map.add(test);
+    CollisionObject box1 = new CollisionObject( 'box1', 350, 350, 100, 100, 0, 0 );
+    map.add(box1);
+    CollisionObject box2 = new CollisionObject( 'box2', 150, 150, 70, 70, 0, 0 );
+    map.add(box2);
     
     
     arena = new Arena( map, ball );
