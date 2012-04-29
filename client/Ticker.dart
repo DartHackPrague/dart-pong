@@ -26,7 +26,6 @@ class Ticker {
     arena.changePositions();
     
     renderer.render();
-    renderer.moveCollisionObject(arena.ball);
     
     //to nemusim delat tak casto
     renderer.renderResults();
