@@ -10,6 +10,7 @@ class Handler extends CollisionObject {
   }
   
   void onCollisionWith(CollisionObject o) {
+    // print('Collision handler');
     ball.speed += 1;
   } 
 }
