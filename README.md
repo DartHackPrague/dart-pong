@@ -13,3 +13,6 @@ How to play:
 2. read instruction on screen to play
 3. don't be scared when ball hits the wall
 4. Enjoy it!
+
+
+Authors: Petr Pecháček, Petr Kohut, Štěpán Zikmund
